@@ -1,0 +1,33 @@
+{
+  "name": "Name 2",
+  "indicators": [{
+    "ref": "closePrice",
+    "type": "org.ta4j.core.indicators.helpers.ClosePriceIndicator",
+    "values": {
+      "barSeries": "barSeries"
+    }
+  }, {
+    "ref": "sma",
+    "type": "org.ta4j.core.indicators.SMAIndicator",
+    "values": {
+      "ref1": "closePrice",
+      "barCount": 21
+    }
+  }],
+  "rules": {
+    "entry": [{
+      "type": "org.ta4j.core.rules.UnderIndicatorRule",
+      "values": {
+        "ref1": "sma",
+        "ref2": "closePrice"
+      }
+    }],
+    "exit": [{
+      "type": "org.ta4j.core.rules.OverIndicatorRule",
+      "values": {
+        "ref1": "sma",
+        "ref2": "closePrice"
+      }
+    }]
+  }
+}

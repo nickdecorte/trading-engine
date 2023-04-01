@@ -1,0 +1,44 @@
+{
+  "name": "Name 1",
+  "indicators": [{
+    "ref": "maSmall",
+    "type": "org.ta4j.core.indicators.CCIIndicator",
+    "values": {
+      "barSeries": "barSeries",
+      "barCount": 7
+    }
+  }, {
+    "ref": "maLarge",
+    "type": "org.ta4j.core.indicators.CCIIndicator",
+    "values": {
+      "barSeries": "barSeries",
+      "barCount": 21
+    }
+  }],
+  "rules": {
+    "entry": [{
+      "type": "org.ta4j.core.rules.IsRisingRule",
+      "values": {
+        "ref": "maLarge",
+        "barCount": 5
+      }
+    }, {
+      "type": "org.ta4j.core.rules.IsLowestRule",
+      "values": {
+        "ref": "maSmall",
+        "barCount": 5
+      }
+    }],
+    "exit": [{
+      "type": "org.ta4j.core.rules.IsRisingRule",
+      "values": {
+        "ref": "maSmall",
+        "barCount": 5
+      }
+    }]
+  },
+  "snapshots": [{
+    "from": "",
+    "till": ""
+  }]
+}
